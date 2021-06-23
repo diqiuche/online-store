@@ -77,35 +77,40 @@ describe('Invoice e2e test', () => {
     cy.visit('/');
   });
 
+  /* this test is commented because it contains required relationships
   it('should create an instance of Invoice', () => {
     cy.intercept('GET', '/api/invoices*').as('entitiesRequest');
     cy.visit('/');
     cy.clickOnEntityMenuItem('invoice');
-    cy.wait('@entitiesRequest').then(({ request, response }) => (startingEntitiesCount = response.body.length));
-    cy.get(entityCreateButtonSelector).click({ force: true });
+    cy.wait('@entitiesRequest')
+      .then(({ request, response }) => startingEntitiesCount = response.body.length);
+    cy.get(entityCreateButtonSelector).click({force: true});
     cy.getEntityCreateUpdateHeading('Invoice');
 
-    cy.get(`[data-cy="date"]`).type('2021-06-22T01:33').invoke('val').should('equal', '2021-06-22T01:33');
+    cy.get(`[data-cy="date"]`).type('2021-06-22T05:41').invoke('val').should('equal', '2021-06-22T05:41');
 
-    cy.get(`[data-cy="details"]`).type('Plastic Devolved', { force: true }).invoke('val').should('match', new RegExp('Plastic Devolved'));
 
-    cy.get(`[data-cy="status"]`).select('ISSUED');
+    cy.get(`[data-cy="details"]`).type('Center Infrastructure', { force: true }).invoke('val').should('match', new RegExp('Center Infrastructure'));
 
-    cy.get(`[data-cy="paymentMethod"]`).select('CREDIT_CARD');
 
-    cy.get(`[data-cy="paymentDate"]`).type('2021-06-21T19:15').invoke('val').should('equal', '2021-06-21T19:15');
+    cy.get(`[data-cy="status"]`).select('PAID');
 
-    cy.get(`[data-cy="paymentAmount"]`).type('17031').should('have.value', '17031');
 
-    cy.get(`[data-cy="code"]`)
-      .type('projection Configuration', { force: true })
-      .invoke('val')
-      .should('match', new RegExp('projection Configuration'));
+    cy.get(`[data-cy="paymentMethod"]`).select('PAYPAL');
+
+
+    cy.get(`[data-cy="paymentDate"]`).type('2021-06-21T15:23').invoke('val').should('equal', '2021-06-21T15:23');
+
+
+    cy.get(`[data-cy="paymentAmount"]`).type('47466').should('have.value', '47466');
+
+
+    cy.get(`[data-cy="code"]`).type('invoice', { force: true }).invoke('val').should('match', new RegExp('invoice'));
 
     cy.setFieldSelectToLastOfEntity('order');
 
-    cy.get(entityCreateSaveButtonSelector).click({ force: true });
-    cy.scrollTo('top', { ensureScrollable: false });
+    cy.get(entityCreateSaveButtonSelector).click({force: true});
+    cy.scrollTo('top', {ensureScrollable: false});
     cy.get(entityCreateSaveButtonSelector).should('not.exist');
     cy.intercept('GET', '/api/invoices*').as('entitiesRequestAfterCreate');
     cy.visit('/');
@@ -114,7 +119,9 @@ describe('Invoice e2e test', () => {
     cy.get(entityTableSelector).should('have.lengthOf', startingEntitiesCount + 1);
     cy.visit('/');
   });
+  */
 
+  /* this test is commented because it contains required relationships
   it('should delete last instance of Invoice', () => {
     cy.intercept('GET', '/api/invoices*').as('entitiesRequest');
     cy.intercept('DELETE', '/api/invoices/*').as('deleteEntityRequest');
@@ -124,9 +131,9 @@ describe('Invoice e2e test', () => {
       startingEntitiesCount = response.body.length;
       if (startingEntitiesCount > 0) {
         cy.get(entityTableSelector).should('have.lengthOf', startingEntitiesCount);
-        cy.get(entityDeleteButtonSelector).last().click({ force: true });
+        cy.get(entityDeleteButtonSelector).last().click({force: true});
         cy.getEntityDeleteDialogHeading('invoice').should('exist');
-        cy.get(entityConfirmDeleteButtonSelector).click({ force: true });
+        cy.get(entityConfirmDeleteButtonSelector).click({force: true});
         cy.wait('@deleteEntityRequest');
         cy.intercept('GET', '/api/invoices*').as('entitiesRequestAfterDelete');
         cy.visit('/');
@@ -137,4 +144,5 @@ describe('Invoice e2e test', () => {
       cy.visit('/');
     });
   });
+  */
 });

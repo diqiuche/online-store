@@ -77,24 +77,28 @@ describe('Shipment e2e test', () => {
     cy.visit('/');
   });
 
+  /* this test is commented because it contains required relationships
   it('should create an instance of Shipment', () => {
     cy.intercept('GET', '/api/shipments*').as('entitiesRequest');
     cy.visit('/');
     cy.clickOnEntityMenuItem('shipment');
-    cy.wait('@entitiesRequest').then(({ request, response }) => (startingEntitiesCount = response.body.length));
-    cy.get(entityCreateButtonSelector).click({ force: true });
+    cy.wait('@entitiesRequest')
+      .then(({ request, response }) => startingEntitiesCount = response.body.length);
+    cy.get(entityCreateButtonSelector).click({force: true});
     cy.getEntityCreateUpdateHeading('Shipment');
 
-    cy.get(`[data-cy="trackingCode"]`).type('quantify', { force: true }).invoke('val').should('match', new RegExp('quantify'));
+    cy.get(`[data-cy="trackingCode"]`).type('Mobility Account', { force: true }).invoke('val').should('match', new RegExp('Mobility Account'));
 
-    cy.get(`[data-cy="date"]`).type('2021-06-21T21:39').invoke('val').should('equal', '2021-06-21T21:39');
 
-    cy.get(`[data-cy="details"]`).type('Burg back-end', { force: true }).invoke('val').should('match', new RegExp('Burg back-end'));
+    cy.get(`[data-cy="date"]`).type('2021-06-21T16:53').invoke('val').should('equal', '2021-06-21T16:53');
+
+
+    cy.get(`[data-cy="details"]`).type('Practical Plains', { force: true }).invoke('val').should('match', new RegExp('Practical Plains'));
 
     cy.setFieldSelectToLastOfEntity('invoice');
 
-    cy.get(entityCreateSaveButtonSelector).click({ force: true });
-    cy.scrollTo('top', { ensureScrollable: false });
+    cy.get(entityCreateSaveButtonSelector).click({force: true});
+    cy.scrollTo('top', {ensureScrollable: false});
     cy.get(entityCreateSaveButtonSelector).should('not.exist');
     cy.intercept('GET', '/api/shipments*').as('entitiesRequestAfterCreate');
     cy.visit('/');
@@ -103,7 +107,9 @@ describe('Shipment e2e test', () => {
     cy.get(entityTableSelector).should('have.lengthOf', startingEntitiesCount + 1);
     cy.visit('/');
   });
+  */
 
+  /* this test is commented because it contains required relationships
   it('should delete last instance of Shipment', () => {
     cy.intercept('GET', '/api/shipments*').as('entitiesRequest');
     cy.intercept('DELETE', '/api/shipments/*').as('deleteEntityRequest');
@@ -113,9 +119,9 @@ describe('Shipment e2e test', () => {
       startingEntitiesCount = response.body.length;
       if (startingEntitiesCount > 0) {
         cy.get(entityTableSelector).should('have.lengthOf', startingEntitiesCount);
-        cy.get(entityDeleteButtonSelector).last().click({ force: true });
+        cy.get(entityDeleteButtonSelector).last().click({force: true});
         cy.getEntityDeleteDialogHeading('shipment').should('exist');
-        cy.get(entityConfirmDeleteButtonSelector).click({ force: true });
+        cy.get(entityConfirmDeleteButtonSelector).click({force: true});
         cy.wait('@deleteEntityRequest');
         cy.intercept('GET', '/api/shipments*').as('entitiesRequestAfterDelete');
         cy.visit('/');
@@ -126,4 +132,5 @@ describe('Shipment e2e test', () => {
       cy.visit('/');
     });
   });
+  */
 });

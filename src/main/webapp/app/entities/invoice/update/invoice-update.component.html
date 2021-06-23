@@ -165,14 +165,19 @@
         <div class="form-group">
           <label class="form-control-label" jhiTranslate="storeApp.invoice.order" for="field_order">Order</label>
           <select class="form-control" id="field_order" data-cy="order" name="order" formControlName="order">
-            <option [ngValue]="null"></option>
+            <option *ngIf="!editForm.get('order')!.value" [ngValue]="null" selected></option>
             <option
               [ngValue]="productOrderOption.id === editForm.get('order')!.value?.id ? editForm.get('order')!.value : productOrderOption"
               *ngFor="let productOrderOption of productOrdersSharedCollection; trackBy: trackProductOrderById"
             >
-              {{ productOrderOption.id }}
+              {{ productOrderOption.code }}
             </option>
           </select>
+        </div>
+        <div *ngIf="editForm.get(['order'])!.invalid && (editForm.get(['order'])!.dirty || editForm.get(['order'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['order'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
         </div>
       </div>
 

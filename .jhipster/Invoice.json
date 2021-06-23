@@ -49,7 +49,9 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "productOrder",
       "otherEntityRelationshipName": "invoice",
-      "relationshipName": "order"
+      "relationshipValidateRules": "required",
+      "relationshipName": "order",
+      "otherEntityField": "code"
     }
   ],
   "entityTableName": "invoice",

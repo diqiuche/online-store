@@ -65,10 +65,10 @@ describe('Component Tests', () => {
 
       it('Should call ProductOrder query and add missing value', () => {
         const orderItem: IOrderItem = { id: 456 };
-        const order: IProductOrder = { id: 47646 };
+        const order: IProductOrder = { id: 35999 };
         orderItem.order = order;
 
-        const productOrderCollection: IProductOrder[] = [{ id: 34156 }];
+        const productOrderCollection: IProductOrder[] = [{ id: 34472 }];
         spyOn(productOrderService, 'query').and.returnValue(of(new HttpResponse({ body: productOrderCollection })));
         const additionalProductOrders = [order];
         const expectedCollection: IProductOrder[] = [...additionalProductOrders, ...productOrderCollection];
@@ -89,7 +89,7 @@ describe('Component Tests', () => {
         const orderItem: IOrderItem = { id: 456 };
         const product: IProduct = { id: 39179 };
         orderItem.product = product;
-        const order: IProductOrder = { id: 93011 };
+        const order: IProductOrder = { id: 21696 };
         orderItem.order = order;
 
         activatedRoute.data = of({ orderItem });

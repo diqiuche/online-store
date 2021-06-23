@@ -61,7 +61,8 @@ public class Invoice implements Serializable {
     @JsonIgnoreProperties(value = { "invoice" }, allowSetters = true)
     private Set<Shipment> shipments = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     @JsonIgnoreProperties(value = { "orderItems", "invoices", "customer" }, allowSetters = true)
     private ProductOrder order;
 

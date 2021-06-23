@@ -14,7 +14,7 @@ export interface IInvoice {
   paymentAmount?: number;
   code?: string;
   shipments?: IShipment[] | null;
-  order?: IProductOrder | null;
+  order?: IProductOrder;
 }
 
 export class Invoice implements IInvoice {
@@ -28,7 +28,7 @@ export class Invoice implements IInvoice {
     public paymentAmount?: number,
     public code?: string,
     public shipments?: IShipment[] | null,
-    public order?: IProductOrder | null
+    public order?: IProductOrder
   ) {}
 }
 

@@ -42,10 +42,10 @@ describe('Component Tests', () => {
     describe('ngOnInit', () => {
       it('Should call Invoice query and add missing value', () => {
         const shipment: IShipment = { id: 456 };
-        const invoice: IInvoice = { id: 86155 };
+        const invoice: IInvoice = { id: 5148 };
         shipment.invoice = invoice;
 
-        const invoiceCollection: IInvoice[] = [{ id: 49409 }];
+        const invoiceCollection: IInvoice[] = [{ id: 79862 }];
         spyOn(invoiceService, 'query').and.returnValue(of(new HttpResponse({ body: invoiceCollection })));
         const additionalInvoices = [invoice];
         const expectedCollection: IInvoice[] = [...additionalInvoices, ...invoiceCollection];
@@ -61,7 +61,7 @@ describe('Component Tests', () => {
 
       it('Should update editForm', () => {
         const shipment: IShipment = { id: 456 };
-        const invoice: IInvoice = { id: 14962 };
+        const invoice: IInvoice = { id: 75071 };
         shipment.invoice = invoice;
 
         activatedRoute.data = of({ shipment });
