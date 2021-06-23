@@ -12,6 +12,7 @@ export interface IInvoice {
   paymentMethod?: PaymentMethod;
   paymentDate?: dayjs.Dayjs;
   paymentAmount?: number;
+  code?: string;
   shipments?: IShipment[] | null;
   order?: IProductOrder | null;
 }
@@ -25,6 +26,7 @@ export class Invoice implements IInvoice {
     public paymentMethod?: PaymentMethod,
     public paymentDate?: dayjs.Dayjs,
     public paymentAmount?: number,
+    public code?: string,
     public shipments?: IShipment[] | null,
     public order?: IProductOrder | null
   ) {}

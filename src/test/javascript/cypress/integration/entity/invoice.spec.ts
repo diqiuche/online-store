@@ -97,6 +97,11 @@ describe('Invoice e2e test', () => {
 
     cy.get(`[data-cy="paymentAmount"]`).type('17031').should('have.value', '17031');
 
+    cy.get(`[data-cy="code"]`)
+      .type('projection Configuration', { force: true })
+      .invoke('val')
+      .should('match', new RegExp('projection Configuration'));
+
     cy.setFieldSelectToLastOfEntity('order');
 
     cy.get(entityCreateSaveButtonSelector).click({ force: true });

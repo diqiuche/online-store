@@ -67,6 +67,9 @@ public class InvoiceService {
                     if (invoice.getPaymentAmount() != null) {
                         existingInvoice.setPaymentAmount(invoice.getPaymentAmount());
                     }
+                    if (invoice.getCode() != null) {
+                        existingInvoice.setCode(invoice.getCode());
+                    }
 
                     return existingInvoice;
                 }
